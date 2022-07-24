@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.romero.withk.databinding.FragmentHomeBinding
-import com.romero.withk.model.Item
+import com.romero.withk.viewmodel.ItemViewModel
 
 class HomeFragment : Fragment() {
 
@@ -16,6 +17,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var adapter = HomeAdapter()
+    private var itemViewModel: ItemViewModel = ItemViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +37,13 @@ class HomeFragment : Fragment() {
         binding.recyclerViewItems.adapter = adapter
         binding.recyclerViewItems.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        // adding example data
-        val itemExample = ArrayList<Item>()
-        itemExample.add(Item("example 1 title", "example 1 img"))
-        itemExample.add(Item("example 2 title", "example 2 img"))
-        itemExample.add(Item("example 3 title", "example 3 img"))
-        itemExample.add(Item("example 4 title", "example 4 img"))
-        adapter.setItems(itemExample)
+        // itemViewModel
+        itemViewModel.getAllItems()
+        itemViewModel.items.observe(viewLifecycleOwner, Observer { data ->
+
+            adapter.setItems(data)
+
+        })
 
     }
 

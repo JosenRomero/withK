@@ -21,7 +21,7 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
 
         holder.binding.apply {
-            title.text = itemsList[position].title
+            title.text = itemsList[position].author
         }
 
     }
