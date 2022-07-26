@@ -3,6 +3,9 @@ package com.romero.withk.fragments.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.romero.withk.R
 import com.romero.withk.databinding.ItemRowBinding
 import com.romero.withk.model.Item
 
@@ -21,7 +24,17 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
 
         holder.binding.apply {
+
             title.text = itemsList[position].author
+
+            // img
+            Glide.with(img.context)
+                .load(itemsList[position].image)
+                .apply(RequestOptions())
+                .placeholder(R.drawable.ic_launcher_background)
+                .centerCrop()
+                .into(img)
+
         }
 
     }
