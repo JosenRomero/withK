@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.romero.withk.databinding.FragmentHomeBinding
+import com.romero.withk.model.Note
 import com.romero.withk.viewmodel.ItemViewModel
 
 class HomeFragment : Fragment() {
@@ -18,6 +19,7 @@ class HomeFragment : Fragment() {
 
     private var adapter = HomeAdapter()
     private var itemViewModel: ItemViewModel = ItemViewModel()
+    private var noteAdapter = NoteAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +29,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         initRecyclerView()
+        initRecyclerViewNotes()
 
         return binding.root
     }
@@ -44,6 +47,22 @@ class HomeFragment : Fragment() {
             adapter.setItems(data)
 
         })
+
+    }
+
+    private fun initRecyclerViewNotes() {
+
+        // recyclerview
+        binding.recyclerViewNotes.adapter = noteAdapter
+        binding.recyclerViewNotes.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        // example data
+        val exampleData = ArrayList<Note>()
+        exampleData.add(Note("example 1 title", "example 1 description"))
+        exampleData.add(Note("example 2 title", "example 2 description"))
+        exampleData.add(Note("example 3 title", "example 3 description"))
+        exampleData.add(Note("example 4 title", "example 4 description"))
+        noteAdapter.setNotes(exampleData)
 
     }
 
