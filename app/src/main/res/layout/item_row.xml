@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:textSize="17sp"
             android:textStyle="normal"
+            android:fontFamily="casual"
             android:maxLines="1"
             android:maxLength="11"
             android:ellipsize="end"
