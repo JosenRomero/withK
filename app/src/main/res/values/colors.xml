@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="whiteSmoke">#F5F5F5</color>
     <color name="cyan_200">#80DEEA</color>
     <color name="cyan_500">#00BCD4</color>
     <color name="cyan_700">#0288D1</color>
