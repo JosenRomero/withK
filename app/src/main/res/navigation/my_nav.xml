@@ -10,4 +10,9 @@
         android:name="com.romero.withk.fragments.home.HomeFragment"
         android:label=""
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/imagesRandomFragment"
+        android:name="com.romero.withk.fragments.imagesRandom.ImagesRandomFragment"
+        android:label=""
+        tools:layout="@layout/fragment_images_random" />
 </navigation>

@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment
+                R.id.homeFragment,
+                R.id.imagesRandomFragment
             )
         )
 
@@ -31,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         // toolbar
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // bottom navigation
+        binding.bottomNavigationView.setupWithNavController(navController)
 
     }
 
