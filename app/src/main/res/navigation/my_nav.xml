@@ -13,6 +13,6 @@
     <fragment
         android:id="@+id/imagesRandomFragment"
         android:name="com.romero.withk.fragments.imagesRandom.ImagesRandomFragment"
-        android:label=""
+        android:label="Images Random"
         tools:layout="@layout/fragment_images_random" />
 </navigation>
