@@ -7,6 +7,6 @@ class GetItems {
 
     private val repository = ItemRepository()
 
-    suspend operator fun invoke(): List<Item> = repository.getAllItems()
+    suspend operator fun invoke(page: Int, limit: Int): List<Item> = repository.getAllItems(page, limit)
 
 }

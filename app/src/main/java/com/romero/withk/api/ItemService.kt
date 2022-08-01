@@ -8,12 +8,12 @@ class ItemService {
 
     private val retrofit = RetrofitHelper.getRetrofit()
 
-    suspend fun getAllItems(): List<Item> {
+    suspend fun getAllItems(page: Int, limit: Int): List<Item> {
 
         // coroutine
         return withContext(Dispatchers.IO) {
 
-            val response = retrofit.create(ItemApiClient::class.java).getAllItems()
+            val response = retrofit.create(ItemApiClient::class.java).getAllItems(page, limit)
 
             // if response.body() is null then return emptyList
             response.body() ?: emptyList()

@@ -14,11 +14,11 @@ class ItemViewModel(): ViewModel() {
 
     var getItems = GetItems()
 
-    fun getAllItems() {
+    fun getAllItems(page: Int, limit: Int) {
 
         viewModelScope.launch(Dispatchers.IO) {
 
-            val result = getItems()
+            val result = getItems(page, limit)
 
             if(result.isNotEmpty()) {
                 items.postValue(result)

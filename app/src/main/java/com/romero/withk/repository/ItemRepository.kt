@@ -7,9 +7,9 @@ class ItemRepository {
 
     private val api = ItemService()
 
-    suspend fun getAllItems(): List<Item> {
+    suspend fun getAllItems(page: Int, limit: Int): List<Item> {
 
-        return api.getAllItems()
+        return api.getAllItems(page, limit)
 
     }
 }

@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         binding.recyclerViewItems.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         // itemViewModel
-        itemViewModel.getAllItems()
+        itemViewModel.getAllItems(1, 10)
         itemViewModel.items.observe(viewLifecycleOwner, Observer { data ->
 
             adapter.setItems(data)
