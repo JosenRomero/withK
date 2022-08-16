@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.romero.withk.databinding.FragmentHomeBinding
-import com.romero.withk.model.Note
 import com.romero.withk.viewmodel.ItemViewModel
+import com.romero.withk.viewmodel.NoteViewModel
 
 class HomeFragment : Fragment() {
 
@@ -20,6 +21,7 @@ class HomeFragment : Fragment() {
     private var adapter = HomeAdapter()
     private var itemViewModel: ItemViewModel = ItemViewModel()
     private var noteAdapter = NoteAdapter()
+    private lateinit var noteViewModel: NoteViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,15 +58,13 @@ class HomeFragment : Fragment() {
         binding.recyclerViewNotes.adapter = noteAdapter
         binding.recyclerViewNotes.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        // example data
-        val exampleData = ArrayList<Note>()
-        exampleData.add(Note(1,"example: note number 1 title", "example 1 description"))
-        exampleData.add(Note(2,"example: note number 2 title", "example 2 description"))
-        exampleData.add(Note(3, "example: note number 3 title", "example 3 description"))
-        exampleData.add(Note(4, "example: note number 4 title", "example 4 description"))
-        exampleData.add(Note(5, "example: note number 5 title", "example 5 description"))
-        exampleData.add(Note(6,"example: note number 6 title", "example 6 description"))
-        noteAdapter.setNotes(exampleData)
+        // NoteViewModel
+        noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
+
+        // Read Database
+        noteViewModel.readAllNotes.observe(viewLifecycleOwner, Observer { notes ->
+            noteAdapter.setNotes(notes)
+        })
 
     }
 

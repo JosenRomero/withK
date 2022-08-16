@@ -19,5 +19,9 @@
         android:id="@+id/addNoteFragment"
         android:name="com.romero.withk.fragments.addNote.AddNoteFragment"
         android:label="Add Note"
-        tools:layout="@layout/fragment_add_note" />
+        tools:layout="@layout/fragment_add_note" >
+        <action
+            android:id="@+id/action_addNoteFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
