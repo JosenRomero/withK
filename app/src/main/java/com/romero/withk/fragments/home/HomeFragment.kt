@@ -58,12 +58,12 @@ class HomeFragment : Fragment() {
 
         // example data
         val exampleData = ArrayList<Note>()
-        exampleData.add(Note("example: note number 1 title", "example 1 description"))
-        exampleData.add(Note("example: note number 2 title", "example 2 description"))
-        exampleData.add(Note("example: note number 3 title", "example 3 description"))
-        exampleData.add(Note("example: note number 4 title", "example 4 description"))
-        exampleData.add(Note("example: note number 5 title", "example 5 description"))
-        exampleData.add(Note("example: note number 6 title", "example 6 description"))
+        exampleData.add(Note(1,"example: note number 1 title", "example 1 description"))
+        exampleData.add(Note(2,"example: note number 2 title", "example 2 description"))
+        exampleData.add(Note(3, "example: note number 3 title", "example 3 description"))
+        exampleData.add(Note(4, "example: note number 4 title", "example 4 description"))
+        exampleData.add(Note(5, "example: note number 5 title", "example 5 description"))
+        exampleData.add(Note(6,"example: note number 6 title", "example 6 description"))
         noteAdapter.setNotes(exampleData)
 
     }

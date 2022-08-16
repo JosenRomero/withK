@@ -15,4 +15,9 @@
         android:name="com.romero.withk.fragments.imagesRandom.ImagesRandomFragment"
         android:label="Images Random"
         tools:layout="@layout/fragment_images_random" />
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.romero.withk.fragments.addNote.AddNoteFragment"
+        android:label="Add Note"
+        tools:layout="@layout/fragment_add_note" />
 </navigation>
