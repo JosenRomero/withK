@@ -1,11 +1,10 @@
 package com.romero.withk.fragments.updateNote
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -46,6 +45,9 @@ class UpdateNoteFragment : Fragment() {
             updateNoteToDatabase()
         }
 
+        // add menu
+        setHasOptionsMenu(true)
+
         return binding.root
 
     }
@@ -69,6 +71,48 @@ class UpdateNoteFragment : Fragment() {
         }else {
             Toast.makeText(requireContext(), "Please fill out name field", Toast.LENGTH_LONG).show()
         }
+
+    }
+
+    // menu
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_menu, menu) // top_menu.xml
+    }
+
+    // menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(item.itemId == R.id.delete_note) { // selected the delete icon
+            alertWindow()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun alertWindow() {
+
+        val dialog = AlertDialog.Builder(requireContext())
+
+        dialog.setPositiveButton("Yes") { _, _ ->
+            deleteNote()
+        }
+
+        dialog.setNegativeButton("No") { _, _ -> }
+
+        dialog.setTitle("Delete Note")
+        dialog.setMessage("Are you sure you want to delete the note")
+        dialog.create().show()
+    }
+
+    private fun deleteNote() {
+
+        // Delete current note in Database
+        noteViewModel.deleteNote(args.currentNote)
+
+        Toast.makeText(requireContext(), "delete Note!", Toast.LENGTH_LONG).show()
+
+        // Navigate Back
+        findNavController().navigate(R.id.action_updateNoteFragment_to_homeFragment)
 
     }
 

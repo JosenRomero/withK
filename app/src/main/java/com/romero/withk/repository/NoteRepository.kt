@@ -22,4 +22,10 @@ class NoteRepository(private val noteDao: NoteDao) {
 
     }
 
+    suspend fun deleteNote(note: Note) {
+
+        noteDao.deleteNote(note)
+
+    }
+
 }
